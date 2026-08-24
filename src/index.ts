@@ -103,7 +103,7 @@ export function apply(_ctx: Context, config: Config) {
     if(registeredPrefix.indexOf(cmdPrefix) > -1){
       // 有相同的prefix了
       logger.error(`唔…命令前缀 ${cmdPrefix} 已经有一个配置在用了，要不换一个呢？`);
-      ctx.dispose();
+      throw new Error(`duplicated command prefix: ${cmdPrefix}`);
     }
     // ok没冲突，能用
     registeredPrefix.push(cmdPrefix);
